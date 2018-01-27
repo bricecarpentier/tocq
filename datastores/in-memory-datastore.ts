@@ -1,5 +1,6 @@
 'use strict'
-import { Promise } from 'bluebird';
+
+import { Promise as P } from 'bluebird';
 import { EventEmitter } from "events";
 import {
   TocqEvent,
@@ -45,7 +46,7 @@ export default class InMemoryDatastore extends EventEmitter implements Datastore
     const event: StoredTocqEvent = { type, payload, createdAt: Date.now() };
     this.store.push(event);
     const returnedEvent: TocqEvent = toEvent(event, this.store.length - 1);
-    Promise.delay(0).then(() => this.notify(returnedEvent));
+    P.delay(0).then(() => this.notify(returnedEvent));
     return returnedEvent;
   }
 }
