@@ -1,7 +1,11 @@
 'use strict'
-
+import { Promise } from 'bluebird';
 import { EventEmitter } from "events";
-import { TocqEvent, Datastore } from "../core/index";
+import {
+  TocqEvent,
+  Datastore,
+  NEW_EVENT,
+} from "../core/index";
 
 interface StoredTocqEvent {
   createdAt: number
@@ -27,6 +31,10 @@ export default class InMemoryDatastore extends EventEmitter implements Datastore
     this.store = [];
   }
 
+  notify(event: TocqEvent) {
+    this.emit(NEW_EVENT, event);
+  }
+
   fetch(from: number, limit = this.limit) {
     return this.store
       .slice(from, from + limit)
@@ -36,6 +44,8 @@ export default class InMemoryDatastore extends EventEmitter implements Datastore
   async append(type, payload) {
     const event: StoredTocqEvent = { type, payload, createdAt: Date.now() };
     this.store.push(event);
-    return toEvent(event, this.store.length - 1);
+    const returnedEvent: TocqEvent = toEvent(event, this.store.length - 1);
+    Promise.delay(0).then(() => this.notify(returnedEvent));
+    return returnedEvent;
   }
 }

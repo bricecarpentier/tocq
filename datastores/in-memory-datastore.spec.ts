@@ -1,4 +1,5 @@
 const lolex = require('lolex');
+import { NEW_EVENT } from '../core/datastore';
 import InMemoryDatastore from './in-memory-datastore';
 
 describe('append', () => {
@@ -20,5 +21,14 @@ describe('append', () => {
       { id: 1, createdAt: 100, type: 'toto', payload: { maman: 3 }}
     ];
     expect(await ds.fetch(0)).toEqual(expected);
+  });
+
+  it ('should emit when an event is appended', async () => {
+    const mock = jest.fn();
+    const ds = new InMemoryDatastore();
+    ds.addListener(NEW_EVENT, mock);
+    await ds.append('toto', { maman: 5 });
+    clock.tick(1);
+    expect(mock).toHaveBeenCalled();
   });
 })
