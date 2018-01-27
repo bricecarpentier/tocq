@@ -1,0 +1,43 @@
+{
+  "name": "tocq",
+  "version": "0.0.1",
+  "description": "Event sourcing server and library.",
+  "main": "index.js",
+  "repository": "git@github.com:bricecarpentier/tocq.git",
+  "author": "Brice Carpentier <brice@daknet.org>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.0.1",
+    "@types/node": "^9.3.0",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-lodash-fp": "^2.1.3",
+    "jest": "^22.0.6",
+    "ts-jest": "^22.0.1",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "lolex": "^2.3.1",
+    "lodash": "^4.17.4"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
