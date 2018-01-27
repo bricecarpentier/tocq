@@ -1,0 +1,11 @@
+version: '2'
+services:
+  mongodb:
+    image: mongo
+  tocq:
+    build: .
+    command: 'yarn start'
+    depends_on:
+    - mongodb
+    volumes:
+    - .:/code:delegated
