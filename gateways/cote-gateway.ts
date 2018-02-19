@@ -19,8 +19,8 @@ export default class CoteGateway implements Gateway {
   constructor(datastore: Datastore) {
     this.datastore = datastore;
     this.datastore.addListener(NEW_EVENT, this.onNewEvent);
-    this.publisher = new Publisher({ name: 'tocq:publisher' });
-    this.responder = new Responder({ name: 'tocq:responder' });
+    this.publisher = new Publisher({ name: 'tocq:publisher', key: 'tocq' });
+    this.responder = new Responder({ name: 'tocq:responder', key: 'tocq' });
     this.responder.on(FETCH, this.onFetchRequest);
   }
 
