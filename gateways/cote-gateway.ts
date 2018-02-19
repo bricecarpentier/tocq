@@ -31,6 +31,13 @@ export default class CoteGateway implements Gateway {
   onFetchRequest = (event: CoteGatewayEvent): Promise<Array<TocqEvent>> => { 
     return this.datastore.fetch(event.from, event.limit);
   }
+
+  teardown = () => {
+    this.datastore.removeListener(NEW_EVENT, this.onNewEvent);
+    this.publisher.close();
+    this.responder.removeAllListeners();
+    this.responder.close();
+  }
 }
 
 export {
