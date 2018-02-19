@@ -38,8 +38,8 @@ export default class InMemoryDatastore extends EventEmitter implements Datastore
 
   async fetch(from: number, limit = this.limit) {
     return this.store
-      .slice(from, from + limit)
-      .map(toEvent);
+      .map(toEvent)
+      .slice(from, from + limit);
   }
 
   async append(type, payload) {
