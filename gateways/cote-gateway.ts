@@ -24,11 +24,11 @@ export default class CoteGateway implements Gateway {
     this.responder.on(FETCH, this.onFetchRequest);
   }
 
-  onNewEvent(event: TocqEvent) {
+  onNewEvent = (event: TocqEvent) => {
     this.publisher.publish(NEW_EVENT, event);
   }
 
-  onFetchRequest(event: CoteGatewayEvent): Promise<Array<TocqEvent>> { 
+  onFetchRequest = (event: CoteGatewayEvent): Promise<Array<TocqEvent>> => { 
     return this.datastore.fetch(event.from, event.limit);
   }
 }
