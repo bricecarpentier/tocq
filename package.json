@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Event sourcing server and library.",
   "scripts": {
-    "start:dev": "node src/server.js",
+    "start:dev": "nodemon --watch src src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +22,8 @@
     "fastify-sse": "^0.1.5",
     "level-logs": "^1.2.0",
     "sse": "0.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }
