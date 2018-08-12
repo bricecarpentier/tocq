@@ -1,0 +1,25 @@
+{
+  "name": "tocq",
+  "version": "1.0.0",
+  "description": "Event sourcing server and library.",
+  "scripts": {
+    "start:dev": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bricecarpentier/tocq.git"
+  },
+  "author": "Brice Carpentier <brice@daknet.org>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bricecarpentier/tocq/issues"
+  },
+  "homepage": "https://github.com/bricecarpentier/tocq#readme",
+  "dependencies": {
+    "fastify": "^1.9.0",
+    "fastify-leveldb": "^0.3.0",
+    "fastify-sse": "^0.1.5",
+    "sse": "0.0.8"
+  }
+}
