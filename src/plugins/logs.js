@@ -1,5 +1,5 @@
-const levelLogs = require('level-logs');
 const fp = require('fastify-plugin');
+const levelLogs = require('level-logs');
 
 const logPlugin = (fastify, opts, next) => {
   const logs = levelLogs(fastify.level, opts);

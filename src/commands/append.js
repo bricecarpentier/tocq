@@ -1,4 +1,3 @@
-const { promisify } = require('util');
 const { isFSA } = require('flux-standard-action');
 
 

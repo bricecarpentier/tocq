@@ -1,6 +1,6 @@
 const { promisify } = require('util');
-const sse = require('./sse');
 const fp = require('fastify-plugin');
+const sse = require('./sse');
 
 
 const promisifyLogs = logs => ({
