@@ -4,7 +4,7 @@
   "description": "Event sourcing server and library.",
   "scripts": {
     "start:dev": "nodemon --watch src src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest src/"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "sse": "0.0.8"
   },
   "devDependencies": {
+    "jest": "^23.5.0",
     "nodemon": "^1.18.3"
   }
 }
