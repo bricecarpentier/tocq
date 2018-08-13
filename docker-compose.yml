@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  store:
+    build: .
+    volumes:
+    - data:/var/tocq/db
+    environment:
+      DB_PATH: /var/tocq/db
+      PORT: 3000
+      HOST: 0.0.0.0
+    ports:
+    - 3000
+
+
+volumes:
+  data:

@@ -6,12 +6,15 @@ const app = require('./plugins/app');
 const levelLogs = require('./plugins/logs');
 
 
-fastify.register(fastifyLevelDB, { name: 'DB' });
+const dbName = process.env.DB_PATH || 'DB';
+
+fastify.register(fastifyLevelDB, { name: dbName });
 fastify.register(levelLogs, { valueEncoding: 'json' });
 fastify.register(app, { commands });
 
 
-fastify.listen(process.env.PORT, err => {
+fastify.listen(process.env.PORT, process.env.HOST, err => {
   if (err) throw err;
-  console.log(`server listening on ${fastify.server.address().port}`);
+  const { address, port } = fastify.server.address();
+  console.log(`server listening on ${address}:${port}`);
 });
