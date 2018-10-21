@@ -1,7 +1,6 @@
-const get = ({ logs }) => async (request, reply) => {
+const get = ({ logs }) => async (request) => {
   const { sequenceId } = request.params;
   const event = await logs.get('default', sequenceId);
-  console.log(event);
   return {
     ...event,
     sequenceId,
