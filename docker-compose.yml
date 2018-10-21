@@ -3,8 +3,10 @@ version: "3"
 services:
   store:
     build: .
+    command: nodemon /srv/app/src/server.js
     volumes:
     - data:/var/tocq/db
+    - ./src:/srv/app/src
     environment:
       DB_PATH: /var/tocq/db
       PORT: 3000
