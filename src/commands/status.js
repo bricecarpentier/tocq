@@ -1,4 +1,4 @@
-const status = ({ logs }) => async (request, reply) => {
+const status = ({ logs }) => async () => {
   const current = await logs.head('default');
   return { status: 'OK', current };
 };
